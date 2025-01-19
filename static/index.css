@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+      font-size: 2em;
+      width: 100%;
+      font-family: 'Work Sans', sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: lightblue;
+}
+
+.header {
+      display: flex;
+      width: 99%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5em;
+      box-sizing: border-box;
+      position: relative;
+      top: 0;
+      left: 0;
+      border: medium solid rgb(6, 97, 97);
+      border-radius: 1rem;
+      margin: 1rem;
+      background-color: rgb(39, 182, 182);
+}
+
+.help {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+}
+
+
+
+.help::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 160%;
+      left: 10%;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
+      white-space: normal;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+      width: 500%;
+      box-sizing: border-box;
+      text-align: left;
+}
+
+.help:hover::after {
+      opacity: 1;
+      visibility: visible;
+}
+
+.help:hover{
+      color: white;
+}
+
+.title a{
+      font-size: 1em;
+      font-weight: bold;
+      color: black;
+      text-decoration: none;
+}
+
+.title a:hover{
+      color: white;
+}
+
+form{
+      width: 100%;
+      height: 100%;
+}
+
+.button{
+      text-align: center;
+      display: flex;
+      justify-content: start;
+}
+
+textarea{
+      width:100%;
+      height: 400px;
+      border: thick solid rgb(14, 180, 180);
+      border-radius: 1em;
+}
+
+button{
+      font-size: x-large;
+      padding: 0.5em;
+      border: medium solid rgb(53, 124, 172);
+      border-radius: 1em;
+}
+
+form :focus{
+      border-color: red;
+
+}
+
+
+button:hover{
+      cursor: pointer;
+}
+
+.madeby a{
+      display: inline-block;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      color: black;
+}
+
+.madeby a:hover{
+      color: white;
+      transform: scale(1.03);
+}
+
+.colab{
+      text-align: center;
+      padding: 0.1em;
+      width: fit-content;
+      border: medium solid aqua;
+      background-color: white;
+      border-radius: 0.25em;
+}
+
+.colab a{
+      text-decoration: none;
+      color: aqua;
+}
+
+.colab a:hover{
+      color: black;
+
+}
+
+button:not(:disabled):hover{
+      cursor: pointer;
+      background-color: darkblue;
+      color: white;
+}
+
+button:disabled{
+      cursor: not-allowed;
+      background-color: darkgray;
+}
+
+.interact{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+}

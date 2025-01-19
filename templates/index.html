@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sentiment Analysis Interface</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+      <div class="header">
+            <div class="help" data-tooltip="Write your review in the given textarea, then click on Submit button!">
+                  <span>Help</span>
+            </div>
+
+            <div class="title">
+                  <a href="https://en.wikipedia.org/wiki/Sentiment_analysis">Sentiment Analysis</a>
+            </div>
+
+            <div class="madeby">
+                  <span>Made by: <a href="https://github.com/mlev25">Mészáros Levente</a></span>
+            </div>
+      </div>
+      <main>
+            <form action="/predict" method="post">
+                  <label for="review">Kérlek add meg az értékelésed/Please write your review here:</label><br>
+                  <textarea name="review" id="review" rows="5"></textarea><br>
+                  <div class="interact">
+                        <div class="button">
+                              <button type="submit" id="gomb" disabled>Küldés/Submit</button>
+                        </div>
+                        <div class="colab">
+                              <span>NLP model in Colab: <a href="https://colab.research.google.com/drive/15YUhznD5QW6HpUjkSDVeQ9fTaNdcXWzr#scrollTo=tYj-8qQ6gWny">NLP_LOG_REG</a></span>
+                        </div>
+                  </div>
+            </form>
+
+            <div id="result"></div>
+      </main>
+      {% if prediction %}
+            <p><strong>Predicted Sentiment:</strong> {{ prediction }}</p>
+      {% endif %}
+
+      <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            
+            const textarea = document.getElementById("review");
+            const submitButton = document.getElementById("gomb");
+
+            textarea.addEventListener("input", function () {
+                  //if textarea is blank, the button will be disabled
+                  if (textarea.value.trim().length > 0) {
+                        submitButton.disabled = false; 
+                  } else {
+                        submitButton.disabled = true;
+                  }
+            });
+            });
+
+            window.onload = function() {
+              const prediction = "{{ prediction }}";
+              if (prediction) {
+                setTimeout(function() {
+                  window.location.href = "/";  
+                }, 5000);
+              }
+            };
+      </script>
+</body>
+</html>
